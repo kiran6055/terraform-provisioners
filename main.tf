@@ -1,7 +1,7 @@
 resource "aws_instance" "test" {
   ami           = "ami-0ba259e664698cbfc"
   instance_type = "t3.micro"
-  security_groups = [aws_security_group.test_provisioners.id]
+  security_groups = ["test_provisioners"]
   key_name      = "terraform1"
 
 
@@ -20,7 +20,7 @@ resource "aws_instance" "test" {
   connection {
     type          = "ssh"
     user          = "ec2-user"
-    private_key   = file("${path.root}/Downloads/terraform1.pem")
+    private_key   = file("${path.module}/terraform1.pem")
     host          = self.public_ip
   }
 

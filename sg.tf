@@ -31,5 +31,5 @@ resource "aws_security_group_rule" "test" {
   to_port           = 0
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = "aws_security_group.test_provisioners"
+  security_group_id = aws_security_group.test_provisioners.id
 }
